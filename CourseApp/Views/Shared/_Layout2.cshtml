@@ -12,27 +12,11 @@
             width: 900px;
             height: 100px;
             border-radius: 20px;
-            background: red;
+            background: blue;
             padding: 20px;
             margin-bottom: 10px;
         }
-        .banner {
-            width: 900px;
-            height: 100px;
-            border-radius: 20px;
-            
-            padding: 20px;
-            margin-bottom: 10px;
-        }
-        .topbanner {
-            background: green;
-        }
-        .bottombanner {
-            background: red;
-        }
-        .defaultbanner {
-            background: yellow;
-        }
+
         #menu {
             width: 200px;
             height: 300px;
@@ -81,12 +65,8 @@
 <body>
 
     <div id="header">
-        Layout 1
+        Layout 2
     </div>
-
-    @RenderSection("TopBanner", false)
-
-
 
     @await Component.InvokeAsync("Menu")
 
@@ -96,21 +76,8 @@
 
     <div style="clear:both;"></div>
 
-    @if (IsSectionDefined("BottomBanner"))
-    {
-        @RenderSection("BottomBanner", false)
-    }
-    else
-    {
-        <div class="banner defaultbanner">
-            Def Banner
-        </div>
-    }
-
-
-
     <div id="footer">
-        Footer 1
+        Footer 2 
     </div>
 
 </body>

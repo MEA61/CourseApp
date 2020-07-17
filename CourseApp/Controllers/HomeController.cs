@@ -1,29 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using CourseApp.Models;
+using CourseApp.Web.Models;
+using CourseApp.Web.ViewModels;
 
-namespace CourseApp.Controllers
+namespace CourseApp.Web.Controllers
 {
     public class HomeController : Controller
     {
+        public object ProductCategoriesViewModel { get; private set; }
+
         public IActionResult Index()
         {
-            return View();
+            var categories = new List<Category>()
+            {
+                new Category(){Name="Kategori 1"},
+                new Category(){Name="Kategori 2"},
+                new Category(){Name="Kategori 3"}
+            };
+            var products = new List<Product>()
+            {
+                new Product(){Name ="Product 1"},
+                new Product(){Name ="Product 2"},
+                new Product(){Name ="Product 3"}
+            };
+            var model = new ProductsCategoriesViewModel();
+            model.Products = products;
+            model.Categories = categories;
+
+            return View(model);
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
-            return View();
+            var categories = new List<Category>()
+            {
+                new Category(){Name="Kategori 1"},
+                new Category(){Name="Kategori 2"},
+                new Category(){Name="Kategori 3"}
+            };
+            var products = new List<Product>()
+            {
+                new Product(){Name ="Product 1"},
+                new Product(){Name ="Product 2"},
+                new Product(){Name ="Product 3"}
+            };
+            var model = new ProductsCategoriesViewModel();
+            model.Products = products;
+            model.Categories = categories;
+
+            return View(model);
+
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult List()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
     }
 }
